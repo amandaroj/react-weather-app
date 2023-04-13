@@ -3,7 +3,7 @@
   border-radius: 6px;
   box-shadow: 10px -2px 20px 2px rgb(0, 0, 0 / 30%);
   color: #fff;
-  background-color: #bfc0c0;
+  background: linear-gradient(to top, #f3904f, #3b4371);
   margin: 20px auto 0 auto;
   padding: 0 20px 20px;
 }
