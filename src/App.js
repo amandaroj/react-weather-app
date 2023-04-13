@@ -2,11 +2,12 @@ import { useState } from "react";
 import { WEATHER_API_KEY, WEATHER_API_URL } from "./api";
 import CurrentWeather from "./components/current-weather/current-weather";
 import Search from "./components/search/search";
+import Forecast from "./components/forecast/forecast";
 import "./index.css";
 
 function App() {
   const [currentWeather, setCurrentWeather] = useState(null);
-  const [forecastWeather, setForecastWeather] = useState(null);
+  const [forecast, setForecast] = useState(null);
 
   const handleOnSearchChange = (searchData) => {
     const [lat, lon] = searchData.value.split(" ");
@@ -24,17 +25,16 @@ function App() {
         const forecastResponse = await response[1].json();
 
         setCurrentWeather({ city: searchData.label, ...weatherResponse });
-        setForecastWeather({ city: searchData.label, ...forecastResponse });
+        setForecast({ city: searchData.label, ...forecastResponse });
       })
       .catch((err) => console.log(err));
   };
-
-  console.log(currentWeather);
-  console.log(forecastWeather);
+  console.log(forecast);
   return (
     <div className="container my-5 mx-auto">
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
+      {forecast && <Forecast data={forecast} />}
     </div>
   );
 }
